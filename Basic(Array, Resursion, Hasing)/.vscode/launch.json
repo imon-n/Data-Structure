@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "e:/Data_structure/24_math",
-      "program": "e:/Data_structure/24_math/build/Debug/outDebug",
+      "cwd": "e:/Data_structure/Basic(Array, Resursion, Hasing)",
+      "program": "e:/Data_structure/Basic(Array, Resursion, Hasing)/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
