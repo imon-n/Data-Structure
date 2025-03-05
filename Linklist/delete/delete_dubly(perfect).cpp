@@ -1,109 +1,109 @@
 #include <bits/stdc++.h>
 using namespace std;
-class Node
-{
+
+class Node {
 public:
     int val;
     Node *next;
     Node *prev;
-    Node(int val)
-    {
+    
+    Node(int val) {
         this->val = val;
         this->next = NULL;
         this->prev = NULL;
     }
 };
-void print_normal(Node *head)
-{
+
+void print_normal(Node *head) {
     Node *tmp = head;
-    while (tmp != NULL)
-    {
+    while (tmp != NULL) {
         cout << tmp->val << " ";
         tmp = tmp->next;
     }
     cout << endl;
 }
-void print_reverse(Node *tail)
-{
+
+void print_reverse(Node *tail) {
     Node *tmp = tail;
-    while (tmp != NULL)
-    {
+    while (tmp != NULL) {
         cout << tmp->val << " ";
         tmp = tmp->prev;
     }
     cout << endl;
 }
-int size(Node *head)
-{
+
+int size(Node *head) {
     Node *tmp = head;
     int cnt = 0;
-    while (tmp != NULL)
-    {
+    while (tmp != NULL) {
         cnt++;
         tmp = tmp->next;
     }
     return cnt;
 }
-void delete_at_position(Node *head, int pos)
-{
+
+void delete_at_position(Node *&head, int pos) {
     Node *tmp = head;
-    for (int i = 1; i <= pos - 1; i++)
-    {
+    for (int i = 1; i <= pos - 1; i++) {
         tmp = tmp->next;
     }
     Node *deleteNode = tmp->next;
     tmp->next = tmp->next->next;
-    tmp->next->prev = tmp;
+    if (tmp->next != NULL) { 
+        tmp->next->prev = tmp;
+    }
     delete deleteNode;
 }
-void delete_tail(Node *&head, Node *&tail)
-{
+
+void delete_tail(Node *&head, Node *&tail) {
+    if (tail == NULL) return;
     Node *deleteNode = tail;
     tail = tail->prev;
     delete deleteNode;
-    if (tail == NULL) //=======>> jodi ekta node takle,,64 number line ase ektau node nai,,,tai head keu NULL korte hbe
-    {                
+    if (tail == NULL) {
         head = NULL;
         return;
     }
     tail->next = NULL;
 }
-void delete_head(Node *&head, Node *&tail)
-{
+
+void delete_head(Node *&head, Node *&tail) {
+    if (head == NULL) return;
     Node *deleteNode = head;
     head = head->next;
     delete deleteNode;
-    if (head == NULL)      //=======>> jodi ekta node takle,,76 number line ase ektau node nai,,,tai tail keu NULL korte hbe
-    {
+    if (head == NULL) {
         tail = NULL;
         return;
     }
     head->prev = NULL;
 }
-int main()
-{
-    Node *head = new Node(10);
-    Node *tail = head;            ////// //ekta node sudu //ekta node sudu  //ekta node sudu
 
-    // connection
+int main() {
+    Node *head = new Node(10);
+    Node *a = new Node(20);
+    Node *b = new Node(30);
+    Node *c = new Node(40);
+    Node *tail = c;
+
+    // Connecting nodes
+    head->next = a;
+    a->prev = head;
+    a->next = b;
+    b->prev = a;
+    b->next = c;
+    c->prev = b;
 
     int pos;
     cin >> pos;
-
-    if (pos >= size(head))
-    {
+    
+    if (pos >= size(head)) {
         cout << "Invalid" << endl;
-    }
-    else if (pos == 0)
-    {
+    } else if (pos == 0) {
         delete_head(head, tail);
-    }
-    else if (pos == size(head) - 1)
-    {
+    } else if (pos == size(head) - 1) {
         delete_tail(head, tail);
-    }
-    else
-    {
+    } else {
         delete_at_position(head, pos);
     }
 
