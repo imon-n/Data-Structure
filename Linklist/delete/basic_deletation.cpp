@@ -51,7 +51,6 @@ void insert_head(Node* &head,int val)
 
 void deleteAtHead(Node *&head){
   Node *temp=head;
-  
   Node *temp2=temp->next;
   head=temp2;
   delete temp;
