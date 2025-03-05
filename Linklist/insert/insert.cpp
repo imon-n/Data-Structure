@@ -51,12 +51,14 @@ void insert_tail(Node* &head,Node* &tail,int val)
    tail=newNode;
    cout<<endl<<"tail done"<<endl;  
 }
+
 void insert_head(Node* &head,int val)
 {
   Node* newNode = new Node(val);
   newNode->next=head;
   head=newNode;
 }
+
 int main(){
    Node*head= new Node(5);
    Node*a= new Node(10);
