@@ -50,6 +50,9 @@ void insert_head(Node* &head,int val)
     Node *temp=head;
     head=newNode;
     newNode->next= temp; 
+
+    // newNode->next = head;
+    // head = newNode;
 }
 
 void print_link_list(Node *head){
