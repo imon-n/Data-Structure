@@ -5,15 +5,14 @@ class Node{
    int value;
    Node *next;
 
-   Node(int value)
-   {  
+   Node(int value){  
      this->value=value;
      this->next=NULL;
    }
 };
 
-int cnt=0;
 int getSize(Node *head){
+    int cnt=0;
     Node *temp=head;
     while (temp!=NULL)
     {
@@ -23,36 +22,30 @@ int getSize(Node *head){
     return cnt;
 }
 
-void insert_at_tail(Node *&head,int val)
-{
+void insert_at_tail(Node *&head,int val){
     Node* newNode= new Node(val);
     if (head==NULL)
     {
-        head=newNode;
-        return;
+      head=newNode;
+      return;
     }
     Node* temp=head;
     while (temp->next!=NULL)
     {
-        temp=temp->next;
+      temp=temp->next;
     }
     temp->next=newNode;       
 }
 
-void insert_head(Node* &head,int val)
-{
+void insert_head(Node* &head,int val){
     Node *newNode = new Node(val);
     if (head==NULL)
     {
        head = newNode;
        return;
     }
-    Node *temp=head;
+    newNode->next= head;
     head=newNode;
-    newNode->next= temp; 
-
-    // newNode->next = head;
-    // head = newNode;
 }
 
 void print_link_list(Node *head){
@@ -67,17 +60,14 @@ void print_link_list(Node *head){
 
 int main(){   
    Node *head=NULL;
-   cout<<"size: "<<getSize(head)<<endl;
    insert_at_tail(head,10);
    insert_at_tail(head,20);
    insert_at_tail(head,30);
    insert_head(head,60);
    insert_at_tail(head,40);
    insert_at_tail(head,50);
-
    insert_head(head,70);
-   print_link_list(head);   
+   print_link_list(head);
    cout<<"size: "<<getSize(head)<<endl;
-  
-    return 0;
+   return 0;
 }

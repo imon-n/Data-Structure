@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 class Node{
    public:
    int value;
@@ -12,6 +13,7 @@ class Node{
      this->prev=NULL;
    }
 };
+
 void print_normal(Node* head)
 {
     Node* temp=head;
@@ -22,7 +24,8 @@ void print_normal(Node* head)
     }
     cout<<endl;
 }
-void print_rverse(Node* tail)
+
+void print_reverse(Node* tail)
 {
     Node* temp=tail;
     while (temp!=NULL)
@@ -32,6 +35,7 @@ void print_rverse(Node* tail)
     }
     cout<<endl;
 }
+
 int size(Node *head)
 {
     Node *tmp = head;
@@ -43,6 +47,7 @@ int size(Node *head)
     }
     return cnt;
 }
+
 void insert_position(Node* head,int pos,int val)
 {
     Node* newNode=new Node(val);
@@ -56,6 +61,7 @@ void insert_position(Node* head,int pos,int val)
     newNode->next->prev=newNode;
     newNode->prev=temp;
 }
+
 void insert_tail(Node* &head,Node* &tail,int val)
 {
    Node *newNode = new Node(val);
@@ -67,8 +73,9 @@ void insert_tail(Node* &head,Node* &tail,int val)
     }
     tail->next=newNode;
     newNode->prev=tail;
-    tail=tail->next;  // ebabeu lika jay(tail=newNode;)
+    tail=tail->next;
 }
+
 void insert_head(Node* &head,Node* &tail,int val)
 {
    Node *newNode = new Node(val);
@@ -80,15 +87,16 @@ void insert_head(Node* &head,Node* &tail,int val)
     }
     newNode->next=head;
     head->prev=newNode;
-    head=newNode;   // ebabeu lika jay(head=head->prev;)  
+    head=newNode;  
 }
+
 int main(){
    Node* head= new Node(10);
    Node* a= new Node(20);
    Node* b= new Node(30);
    Node* c= new Node(40);
    Node* tail= c;
-   //connection
+   
    head->next=a;
    a->prev=head;
    a->next=b;
@@ -101,7 +109,7 @@ int main(){
 
    if (pos>size(head))
    {
-    cout<<"invalid"<<endl;
+    cout<<"Invalid position"<<endl;
    }
    else if (pos==size(head))
    {
@@ -115,9 +123,9 @@ int main(){
    {
      insert_position(head,pos,100);
    }
-  print_normal(head);
-  print_rverse(tail);
   
-   
-    return 0;
+  print_normal(head);
+  print_reverse(tail);
+  
+   return 0;
 }
